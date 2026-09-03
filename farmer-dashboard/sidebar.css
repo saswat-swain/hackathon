@@ -1,0 +1,177 @@
+/* Shared sidebar styling used by every farmer interface. */
+
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    background: var(--dark, #303038);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 18px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-icon {
+    width: 55px;
+    height: 55px;
+    border: 2px solid var(--orange, #f66a0a);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange, #f66a0a);
+    font-size: 26px;
+}
+
+.logo h2 {
+    color: white;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.logo h2 span {
+    color: var(--orange, #f66a0a);
+}
+
+.logo p {
+    color: #aaa;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.farmer-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 10px;
+    padding: 15px 0;
+}
+
+.profile-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--orange, #f66a0a);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.farmer-profile h4 {
+    color: white;
+    font-size: 14px;
+}
+
+.farmer-profile p {
+    color: #a9a9af;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: #bcbcc3;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.menu-item i {
+    width: 20px;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: white;
+}
+
+.menu-item.active {
+    background: var(--orange, #f66a0a);
+    color: white;
+}
+
+.notification-count {
+    position: absolute;
+    right: 15px;
+    background: var(--orange, #f66a0a);
+    color: white;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 15px;
+}
+
+.logout:hover {
+    color: #ff7d7d;
+}
+
+.mobile-menu-btn {
+    display: none;
+    border: none;
+    background: var(--orange, #f66a0a);
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 900;
+}
+
+.overlay.show {
+    display: block;
+}
+
+@media (max-width: 1000px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: 0.3s;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+}
