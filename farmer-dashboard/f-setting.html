@@ -197,8 +197,8 @@
     ========================= */
 
     .main {
-      width: calc(100% - 310px);
-      margin-left: 310px;
+      width: calc(100% - 280px);
+      margin-left: 280px;
       min-height: 100vh;
     }
 
@@ -1040,8 +1040,8 @@
       }
 
       .main {
-        margin-left: 75px;
-        width: calc(100% - 75px);
+        margin-left: 0;
+        width: 100%;
       }
 
       .topbar {
@@ -1127,12 +1127,14 @@
     }
 
   </style>
+  <link rel="stylesheet" href="sidebar.css">
 </head>
 
 
 <body>
 
   <div class="app">
+    <div class="overlay" id="overlay"></div>
 
 
     <!-- =========================
@@ -1140,115 +1142,75 @@
     ========================= -->
 
     <aside class="sidebar">
-
-      <div class="profile-box">
-
-        <div class="avatar">
-          <i class="fa-solid fa-user"></i>
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-wheat-awn"></i>
         </div>
-
-        <div class="profile-info">
-          <h3>Ramesh Kumar</h3>
-          <p>Farmer ID: FRM10245</p>
+        <div>
+          <h2>KRISHI<span>FLOW</span></h2>
+          <p>SMART PROCUREMENT</p>
         </div>
-
       </div>
 
+      <div class="farmer-profile">
+        <div class="profile-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div>
+          <h4>Ramesh Kumar</h4>
+          <p>Farmer ID: FRM10245</p>
+        </div>
+      </div>
 
-      <nav class="nav">
-
-        <a href="dashboard.html">
-          <span class="icon">
-            <i class="fa-solid fa-house"></i>
-          </span>
+      <nav class="sidebar-menu">
+        <a href="dashboard.html" class="menu-item">
+          <i class="fa-solid fa-house"></i>
           <span>Dashboard</span>
         </a>
-
-
-        <a href="dashboard.html#slot">
-          <span class="icon">
-            <i class="fa-solid fa-calendar-days"></i>
-          </span>
+        <a href="dashboard.html#slot" class="menu-item">
+          <i class="fa-solid fa-calendar-check"></i>
           <span>Book Procurement Slot</span>
         </a>
-
-
-        <a href="dashboard.html#crops">
-          <span class="icon">
-            <i class="fa-solid fa-wheat-awn"></i>
-          </span>
+        <a href="dashboard.html#crops" class="menu-item">
+          <i class="fa-solid fa-wheat-awn"></i>
           <span>My Crops</span>
         </a>
-
-
-        <a href="dashboard.html#transport">
-          <span class="icon">
-            <i class="fa-solid fa-truck"></i>
-          </span>
+        <a href="dashboard.html#transport" class="menu-item">
+          <i class="fa-solid fa-truck"></i>
           <span>Transport Booking</span>
         </a>
-
-
-        <a href="dashboard.html#tracking">
-          <span class="icon">
-            <i class="fa-solid fa-location-dot"></i>
-          </span>
+        <a href="dashboard.html#tracking" class="menu-item">
+          <i class="fa-solid fa-location-dot"></i>
           <span>Live Vehicle Tracking</span>
         </a>
-
-
-        <a href="dashboard.html#queue">
-          <span class="icon">
-            <i class="fa-solid fa-ticket"></i>
-          </span>
+        <a href="dashboard.html#queue" class="menu-item">
+          <i class="fa-solid fa-ticket"></i>
           <span>My Token & Queue</span>
         </a>
-
-
-        <a href="dashboard.html#procurement">
-          <span class="icon">
-            <i class="fa-solid fa-scale-balanced"></i>
-          </span>
+        <a href="dashboard.html#procurement" class="menu-item">
+          <i class="fa-solid fa-scale-balanced"></i>
           <span>Procurement Status</span>
         </a>
-
-
-        <a href="dashboard.html#payment">
-          <span class="icon">
-            <i class="fa-solid fa-wallet"></i>
-          </span>
+        <a href="dashboard.html#payment" class="menu-item">
+          <i class="fa-solid fa-wallet"></i>
           <span>Payment Status</span>
         </a>
-
-
-        <a href="dashboard.html#notifications">
-          <span class="icon">
-            <i class="fa-solid fa-bell"></i>
-          </span>
+        <a href="dashboard.html#notifications" class="menu-item">
+          <i class="fa-solid fa-bell"></i>
           <span>Notifications</span>
         </a>
-
-
-        <div class="nav-divider"></div>
-
-
-        <a href="f-setting.html" class="active">
-          <span class="icon">
-            <i class="fa-solid fa-gear"></i>
-          </span>
-          <span>Settings</span>
-        </a>
-
-
-        <a href="../farmer-login/f-login.html">
-          <span class="icon">
-            <i class="fa-solid fa-right-from-bracket"></i>
-          </span>
-          <span>Logout</span>
-        </a>
-
       </nav>
 
+      <div class="sidebar-bottom">
+        <a href="f-setting.html" class="menu-item active">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="../farmer-login/f-login.html" class="menu-item logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </div>
     </aside>
 
 
@@ -1266,15 +1228,19 @@
 
       <header class="topbar">
 
-        <div>
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="menuBtn" type="button" aria-label="Open navigation menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
 
-          <div class="portal-label">
-            FARMER PROCUREMENT PORTAL
+          <div>
+            <div class="portal-label">
+              FARMER PROCUREMENT PORTAL
+            </div>
+            <h1 class="page-title">
+              Settings
+            </h1>
           </div>
-
-          <h1 class="page-title">
-            Settings
-          </h1>
 
         </div>
 
@@ -2495,6 +2461,20 @@
 
     const panels =
       document.querySelectorAll(".settings-panel");
+
+    const menuButton = document.getElementById("menuBtn");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.getElementById("overlay");
+
+    menuButton.addEventListener("click", () => {
+      sidebar.classList.add("show");
+      overlay.classList.add("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("show");
+      overlay.classList.remove("show");
+    });
 
 
     tabs.forEach((tab) => {
