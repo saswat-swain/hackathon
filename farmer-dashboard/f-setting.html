@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Settings | Farmer Procurement Portal</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- FONT AWESOME -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <style>
+
+    /* =========================
+       GLOBAL
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #ff6b08;
+      --primary-dark: #e85c00;
+      --sidebar: #353640;
+      --background: #f5f4f1;
+      --white: #ffffff;
+      --text: #2e3540;
+      --muted: #7a818c;
+      --border: #e2e0dc;
+      --green: #3f8f66;
+      --blue: #3978aa;
+      --purple: #7565a7;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
+
+
+    /* =========================
+       APP LAYOUT
+    ========================= */
+
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+      width: 310px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      background: var(--sidebar);
+      color: white;
+
+      padding: 20px;
+      overflow-y: auto;
+
+      z-index: 100;
+    }
+
+    .profile-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      padding: 42px 12px 38px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .avatar {
+      width: 55px;
+      height: 55px;
+
+      border-radius: 50%;
+      background: var(--primary);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 21px;
+      color: white;
+
+      box-shadow: 0 8px 20px rgba(255,107,8,.25);
+    }
+
+    .profile-info h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .profile-info p {
+      color: #b8bbc4;
+      font-size: 12px;
+    }
+
+
+    /* =========================
+       SIDEBAR NAVIGATION
+    ========================= */
+
+    .nav {
+      padding-top: 24px;
+    }
+
+    .nav a {
+      text-decoration: none;
+
+      display: flex;
+      align-items: center;
+      gap: 18px;
+
+      padding: 16px 17px;
+      margin-bottom: 7px;
+
+      border-radius: 12px;
+
+      color: #c6c9d0;
+      font-size: 16px;
+
+      transition: .25s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,.07);
+      color: white;
+    }
+
+    .nav a.active {
+      color: white;
+
+      background: linear-gradient(
+        90deg,
+        #ff8a1e,
+        #ff6500
+      );
+
+      box-shadow: 0 8px 20px rgba(255,107,8,.2);
+    }
+
+    .nav .icon {
+      width: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav .icon i {
+      font-size: 17px;
+      width: 22px;
+      text-align: center;
+    }
+
+    .nav-divider {
+      height: 1px;
+      background: rgba(255,255,255,.08);
+      margin: 14px 0 18px;
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main {
+      width: calc(100% - 310px);
+      margin-left: 310px;
+      min-height: 100vh;
+    }
+
+
+    /* =========================
+       TOPBAR
+    ========================= */
+
+    .topbar {
+      height: 104px;
+
+      background: rgba(255,255,255,.72);
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 75px;
+    }
+
+    .portal-label {
+      color: var(--primary-dark);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 7px;
+    }
+
+    .page-title {
+      font-family: "Playfair Display", serif;
+
+      font-size: 35px;
+      color: var(--text);
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+
+    /* WEATHER */
+
+    .weather {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .weather-icon {
+      color: var(--primary);
+    }
+
+    .weather-icon i {
+      font-size: 29px;
+    }
+
+    .weather h4 {
+      font-size: 15px;
+    }
+
+    .weather p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+
+    /* NOTIFICATION */
+
+    .notification {
+      width: 52px;
+      height: 52px;
+
+      border-radius: 50%;
+
+      background: #f0efec;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+    }
+
+    .notification i {
+      font-size: 18px;
+      color: #3f4650;
+    }
+
+    .notification span {
+      position: absolute;
+
+      top: -6px;
+      right: -2px;
+
+      width: 23px;
+      height: 23px;
+
+      border-radius: 50%;
+
+      background: var(--primary);
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    /* TOP USER */
+
+    .top-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-avatar {
+      width: 54px;
+      height: 54px;
+
+      border-radius: 50%;
+
+      background: var(--primary);
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 700;
+    }
+
+    .top-user h4 {
+      font-size: 15px;
+    }
+
+    .top-user p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    .content {
+      padding: 45px 78px 70px;
+    }
+
+
+    /* =========================
+       SETTINGS BANNER
+    ========================= */
+
+    .settings-banner {
+      position: relative;
+      overflow: hidden;
+
+      padding: 40px 55px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          110deg,
+          #353640,
+          #40414c,
+          #704323
+        );
+
+      color: white;
+
+      margin-bottom: 30px;
+    }
+
+    .settings-banner::after {
+      content: "\f013";
+
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+
+      position: absolute;
+
+      right: 65px;
+      top: 5px;
+
+      font-size: 180px;
+
+      color: rgba(255,255,255,.06);
+    }
+
+    .banner-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: 1.5px;
+
+      color: #ffd2b2;
+
+      margin-bottom: 15px;
+    }
+
+    .settings-banner h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 38px;
+
+      margin-bottom: 12px;
+    }
+
+    .settings-banner p {
+      max-width: 700px;
+
+      color: #d6d8df;
+
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       SETTINGS LAYOUT
+    ========================= */
+
+    .settings-layout {
+      display: grid;
+
+      grid-template-columns: 280px 1fr;
+
+      gap: 25px;
+      align-items: start;
+    }
+
+
+    /* =========================
+       SETTINGS MENU
+    ========================= */
+
+    .settings-menu {
+      background: white;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      padding: 15px;
+
+      height: fit-content;
+    }
+
+    .settings-menu-title {
+      padding: 15px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: 1.5px;
+
+      color: var(--primary-dark);
+    }
+
+    .setting-tab {
+      width: 100%;
+
+      border: none;
+      outline: none;
+
+      background: transparent;
+
+      display: flex;
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 14px;
+
+      border-radius: 12px;
+
+      margin-bottom: 5px;
+
+      color: #5d6570;
+
+      font-size: 15px;
+
+      cursor: pointer;
+
+      text-align: left;
+
+      transition: .25s ease;
+    }
+
+    .setting-tab:hover {
+      background: #f7f5f2;
+    }
+
+    .setting-tab.active {
+      background: #fff0e6;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .tab-icon {
+      width: 35px;
+      height: 35px;
+
+      border-radius: 10px;
+
+      background: #f2f1ef;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: .25s ease;
+    }
+
+    .tab-icon i {
+      font-size: 15px;
+    }
+
+    .setting-tab.active .tab-icon {
+      background: var(--primary);
+      color: white;
+    }
+
+
+    /* =========================
+       SETTINGS PANEL
+    ========================= */
+
+    .settings-panel {
+      display: none;
+
+      background: white;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      padding: 35px;
+
+      animation: fadeIn .3s ease;
+    }
+
+    .settings-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    .panel-heading {
+      padding-bottom: 25px;
+      margin-bottom: 28px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-heading h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 29px;
+
+      margin-bottom: 7px;
+    }
+
+    .panel-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 22px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      gap: 9px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #4d5560;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+
+      border: 1px solid #dddcd8;
+
+      padding: 14px 15px;
+
+      border-radius: 10px;
+
+      background: white;
+
+      outline: none;
+
+      font-size: 14px;
+
+      color: var(--text);
+
+      transition: .25s ease;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(255,107,8,.09);
+    }
+
+    input:disabled {
+      background: #f4f3f1;
+      color: #8a9098;
+      cursor: not-allowed;
+    }
+
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .save-row {
+      margin-top: 30px;
+
+      display: flex;
+      justify-content: flex-end;
+
+      gap: 12px;
+    }
+
+    .btn {
+      border: none;
+
+      padding: 13px 22px;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: .25s ease;
+    }
+
+    .btn-secondary {
+      background: #f1f0ee;
+      color: #5b6370;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+
+      box-shadow:
+        0 8px 18px
+        rgba(255,107,8,.18);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================
+       NOTIFICATION TOGGLES
+    ========================= */
+
+    .toggle-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 14px;
+    }
+
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .toggle-info {
+      display: flex;
+      align-items: center;
+
+      gap: 15px;
+    }
+
+    .toggle-icon {
+      width: 46px;
+      height: 46px;
+
+      border-radius: 12px;
+
+      background: #fff1e8;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--primary);
+    }
+
+    .toggle-icon i {
+      font-size: 18px;
+    }
+
+    .toggle-info h4 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .toggle-info p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+
+    /* SWITCH */
+
+    .switch {
+      position: relative;
+
+      width: 50px;
+      height: 27px;
+
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      display: none;
+    }
+
+    .slider {
+      position: absolute;
+
+      inset: 0;
+
+      border-radius: 30px;
+
+      background: #d5d5d5;
+
+      cursor: pointer;
+
+      transition: .3s;
+    }
+
+    .slider::before {
+      content: "";
+
+      position: absolute;
+
+      width: 21px;
+      height: 21px;
+
+      left: 3px;
+      top: 3px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      transition: .3s;
+    }
+
+    .switch input:checked + .slider {
+      background: var(--primary);
+    }
+
+    .switch input:checked + .slider::before {
+      transform: translateX(23px);
+    }
+
+
+    /* =========================
+       SECURITY
+    ========================= */
+
+    .security-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 22px;
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      margin-bottom: 16px;
+    }
+
+    .security-content {
+      display: flex;
+      align-items: center;
+
+      gap: 15px;
+    }
+
+    .security-icon {
+      width: 48px;
+      height: 48px;
+
+      border-radius: 12px;
+
+      background: #fff1e8;
+
+      color: var(--primary);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 19px;
+    }
+
+    .security-card h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .security-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .outline-btn {
+      padding: 10px 16px;
+
+      border: 1px solid var(--primary);
+
+      border-radius: 9px;
+
+      background: white;
+
+      color: var(--primary-dark);
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition: .25s ease;
+    }
+
+    .outline-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+
+    /* =========================
+       HELP SUPPORT
+    ========================= */
+
+    .help-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 18px;
+    }
+
+    .help-card {
+      padding: 24px;
+
+      border: 1px solid var(--border);
+      border-radius: 15px;
+
+      transition: .25s ease;
+    }
+
+    .help-card:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.05);
+    }
+
+    .help-icon {
+      width: 50px;
+      height: 50px;
+
+      border-radius: 13px;
+
+      background: #fff0e5;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--primary);
+
+      margin-bottom: 16px;
+    }
+
+    .help-icon i {
+      font-size: 21px;
+    }
+
+    .help-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .help-card p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      margin-bottom: 15px;
+    }
+
+    .help-card button {
+      border: none;
+
+      background: transparent;
+
+      color: var(--primary-dark);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 1100px) {
+
+      .settings-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .settings-menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .settings-menu-title {
+        grid-column: 1 / -1;
+      }
+
+      .topbar,
+      .content {
+        padding-left: 35px;
+        padding-right: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .sidebar {
+        width: 75px;
+        padding: 15px 10px;
+      }
+
+      .profile-box {
+        justify-content: center;
+        padding: 25px 0;
+      }
+
+      .profile-info,
+      .nav a span:last-child {
+        display: none;
+      }
+
+      .nav a {
+        justify-content: center;
+        padding: 17px 5px;
+      }
+
+      .main {
+        margin-left: 75px;
+        width: calc(100% - 75px);
+      }
+
+      .topbar {
+        height: auto;
+        min-height: 90px;
+
+        padding: 20px;
+      }
+
+      .weather,
+      .top-user > div:not(.top-avatar) {
+        display: none;
+      }
+
+      .content {
+        padding: 25px 20px;
+      }
+
+      .settings-banner {
+        padding: 30px;
+      }
+
+      .settings-banner h2 {
+        font-size: 30px;
+      }
+
+      .settings-banner::after {
+        font-size: 100px;
+        right: 20px;
+      }
+
+      .settings-menu {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid,
+      .help-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .security-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .toggle-item {
+        gap: 15px;
+      }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+      .page-title {
+        font-size: 27px;
+      }
+
+      .portal-label {
+        font-size: 10px;
+      }
+
+      .settings-panel {
+        padding: 22px;
+      }
+
+      .settings-banner h2 {
+        font-size: 26px;
+      }
+
+      .settings-banner p {
+        font-size: 14px;
+      }
+
+      .toggle-info p {
+        display: none;
+      }
+
+      .security-content {
+        align-items: flex-start;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="app">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
+    <aside class="sidebar">
+
+      <div class="profile-box">
+
+        <div class="avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div class="profile-info">
+          <h3>Ramesh Kumar</h3>
+          <p>Farmer ID: FRM10245</p>
+        </div>
+
+      </div>
+
+
+      <nav class="nav">
+
+        <a href="dashboard.html">
+          <span class="icon">
+            <i class="fa-solid fa-house"></i>
+          </span>
+          <span>Dashboard</span>
+        </a>
+
+
+        <a href="dashboard.html#slot">
+          <span class="icon">
+            <i class="fa-solid fa-calendar-days"></i>
+          </span>
+          <span>Book Procurement Slot</span>
+        </a>
+
+
+        <a href="dashboard.html#crops">
+          <span class="icon">
+            <i class="fa-solid fa-wheat-awn"></i>
+          </span>
+          <span>My Crops</span>
+        </a>
+
+
+        <a href="dashboard.html#transport">
+          <span class="icon">
+            <i class="fa-solid fa-truck"></i>
+          </span>
+          <span>Transport Booking</span>
+        </a>
+
+
+        <a href="dashboard.html#tracking">
+          <span class="icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </span>
+          <span>Live Vehicle Tracking</span>
+        </a>
+
+
+        <a href="dashboard.html#queue">
+          <span class="icon">
+            <i class="fa-solid fa-ticket"></i>
+          </span>
+          <span>My Token & Queue</span>
+        </a>
+
+
+        <a href="dashboard.html#procurement">
+          <span class="icon">
+            <i class="fa-solid fa-scale-balanced"></i>
+          </span>
+          <span>Procurement Status</span>
+        </a>
+
+
+        <a href="dashboard.html#payment">
+          <span class="icon">
+            <i class="fa-solid fa-wallet"></i>
+          </span>
+          <span>Payment Status</span>
+        </a>
+
+
+        <a href="dashboard.html#notifications">
+          <span class="icon">
+            <i class="fa-solid fa-bell"></i>
+          </span>
+          <span>Notifications</span>
+        </a>
+
+
+        <div class="nav-divider"></div>
+
+
+        <a href="f-setting.html" class="active">
+          <span class="icon">
+            <i class="fa-solid fa-gear"></i>
+          </span>
+          <span>Settings</span>
+        </a>
+
+
+        <a href="../farmer-login/f-login.html">
+          <span class="icon">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </span>
+          <span>Logout</span>
+        </a>
+
+      </nav>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="main">
+
+
+      <!-- =========================
+           TOPBAR
+      ========================= -->
+
+      <header class="topbar">
+
+        <div>
+
+          <div class="portal-label">
+            FARMER PROCUREMENT PORTAL
+          </div>
+
+          <h1 class="page-title">
+            Settings
+          </h1>
+
+        </div>
+
+
+        <div class="top-right">
+
+
+          <div class="weather">
+
+            <div class="weather-icon">
+              <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+
+            <div>
+              <h4>27°C</h4>
+              <p>Partly Cloudy</p>
+            </div>
+
+          </div>
+
+
+          <div class="notification">
+
+            <i class="fa-regular fa-bell"></i>
+
+            <span>3</span>
+
+          </div>
+
+
+          <div class="top-user">
+
+            <div class="top-avatar">
+              RK
+            </div>
+
+            <div>
+              <h4>Ramesh Kumar</h4>
+              <p>Farmer Account</p>
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </header>
+
+
+
+      <!-- =========================
+           PAGE CONTENT
+      ========================= -->
+
+      <section class="content">
+
+
+        <!-- SETTINGS BANNER -->
+
+        <div class="settings-banner">
+
+          <div class="banner-tag">
+            <i class="fa-solid fa-gear"></i>
+            ACCOUNT MANAGEMENT
+          </div>
+
+          <h2>
+            Manage Your Settings
+          </h2>
+
+          <p>
+            Update your farmer profile, location, farm details,
+            notifications, bank information and account security
+            from one secure platform.
+          </p>
+
+        </div>
+
+
+
+        <!-- SETTINGS LAYOUT -->
+
+        <div class="settings-layout">
+
+
+          <!-- =========================
+               LEFT SETTINGS MENU
+          ========================= -->
+
+          <div class="settings-menu">
+
+            <div class="settings-menu-title">
+              SETTINGS MENU
+            </div>
+
+
+            <button
+              class="setting-tab active"
+              data-tab="profile"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-user"></i>
+              </span>
+
+              Profile
+
+            </button>
+
+
+            <button
+              class="setting-tab"
+              data-tab="location"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </span>
+
+              Address & Location
+
+            </button>
+
+
+            <button
+              class="setting-tab"
+              data-tab="farm"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-wheat-awn"></i>
+              </span>
+
+              Farm Details
+
+            </button>
+
+
+            <button
+              class="setting-tab"
+              data-tab="notification"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-bell"></i>
+              </span>
+
+              Notifications
+
+            </button>
+
+
+            <button
+              class="setting-tab"
+              data-tab="preferences"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-sliders"></i>
+              </span>
+
+              App Preferences
+
+            </button>
+
+
+            <button
+              class="setting-tab"
+              data-tab="security"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </span>
+
+              Security
+
+            </button>
+
+
+            <button
+              class="setting-tab"
+              data-tab="bank"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-building-columns"></i>
+              </span>
+
+              Bank Details
+
+            </button>
+
+
+            <button
+              class="setting-tab"
+              data-tab="support"
+            >
+
+              <span class="tab-icon">
+                <i class="fa-solid fa-headset"></i>
+              </span>
+
+              Help & Support
+
+            </button>
+
+          </div>
+
+
+
+          <!-- =========================
+               PROFILE PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel active"
+            id="profile"
+          >
+
+            <div class="panel-heading">
+
+              <h2>Profile Settings</h2>
+
+              <p>
+                Manage your personal farmer account information.
+              </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label>Farmer Name</label>
+
+                <input
+                  type="text"
+                  value="Ramesh Kumar"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Farmer ID</label>
+
+                <input
+                  type="text"
+                  value="FRM10245"
+                  disabled
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Farmer Code</label>
+
+                <input
+                  type="text"
+                  value="OD-FRM-2026-10245"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Mobile Number</label>
+
+                <input
+                  type="tel"
+                  value="+91 9876543210"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Email Address</label>
+
+                <input
+                  type="email"
+                  value="ramesh@example.com"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Gender</label>
+
+                <select>
+
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <div class="save-row">
+
+              <button class="btn btn-secondary">
+                Cancel
+              </button>
+
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Save Changes
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =========================
+               LOCATION PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel"
+            id="location"
+          >
+
+            <div class="panel-heading">
+
+              <h2>Address & Location</h2>
+
+              <p>
+                Update your registered residential and farm location.
+              </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label>State</label>
+
+                <select>
+                  <option>Odisha</option>
+                  <option>West Bengal</option>
+                  <option>Jharkhand</option>
+                  <option>Bihar</option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>District</label>
+
+                <input
+                  type="text"
+                  value="Kendrapara"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Block</label>
+
+                <input
+                  type="text"
+                  value="Kendrapara"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Gram Panchayat</label>
+
+                <input
+                  type="text"
+                  value="Kendrapara GP"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Village</label>
+
+                <input
+                  type="text"
+                  value="Tarini Village"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>PIN Code</label>
+
+                <input
+                  type="text"
+                  value="754211"
+                >
+
+              </div>
+
+
+              <div class="form-group full">
+
+                <label>Full Address</label>
+
+                <textarea>Village Tarini, Kendrapara Block, Kendrapara District, Odisha</textarea>
+
+              </div>
+
+            </div>
+
+
+            <div class="save-row">
+
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-location-dot"></i>
+                Update Location
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =========================
+               FARM PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel"
+            id="farm"
+          >
+
+            <div class="panel-heading">
+
+              <h2>Farm & Crop Details</h2>
+
+              <p>
+                Maintain your agricultural and crop information.
+              </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label>Total Land Area</label>
+
+                <input
+                  type="text"
+                  value="5 Acres"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Land Ownership</label>
+
+                <select>
+                  <option>Owned</option>
+                  <option>Leased</option>
+                  <option>Joint Ownership</option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Primary Crop</label>
+
+                <select>
+                  <option>Rice</option>
+                  <option>Wheat</option>
+                  <option>Maize</option>
+                  <option>Vegetables</option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Expected Production</label>
+
+                <input
+                  type="text"
+                  value="50 Quintals"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Procurement Center</label>
+
+                <input
+                  type="text"
+                  value="Kendrapara Procurement Center"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Farmer Category</label>
+
+                <select>
+                  <option>Small Farmer</option>
+                  <option>Marginal Farmer</option>
+                  <option>Large Farmer</option>
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <div class="save-row">
+
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-wheat-awn"></i>
+                Save Farm Details
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =========================
+               NOTIFICATION PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel"
+            id="notification"
+          >
+
+            <div class="panel-heading">
+
+              <h2>Notification Preferences</h2>
+
+              <p>
+                Choose which updates you want to receive.
+              </p>
+
+            </div>
+
+
+            <div class="toggle-list">
+
+
+              <div class="toggle-item">
+
+                <div class="toggle-info">
+
+                  <div class="toggle-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                  </div>
+
+                  <div>
+                    <h4>Procurement Slot Updates</h4>
+
+                    <p>
+                      Receive alerts about slot booking and confirmation.
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    checked
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+
+              <div class="toggle-item">
+
+                <div class="toggle-info">
+
+                  <div class="toggle-icon">
+                    <i class="fa-solid fa-truck"></i>
+                  </div>
+
+                  <div>
+                    <h4>Vehicle Booking Updates</h4>
+
+                    <p>
+                      Get transport booking and vehicle arrival alerts.
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    checked
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+
+              <div class="toggle-item">
+
+                <div class="toggle-info">
+
+                  <div class="toggle-icon">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                  </div>
+
+                  <div>
+                    <h4>Payment Notifications</h4>
+
+                    <p>
+                      Get notified when procurement payment is processed.
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    checked
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+
+              <div class="toggle-item">
+
+                <div class="toggle-info">
+
+                  <div class="toggle-icon">
+                    <i class="fa-solid fa-ticket"></i>
+                  </div>
+
+                  <div>
+                    <h4>Queue & Token Alerts</h4>
+
+                    <p>
+                      Receive queue position and token notifications.
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input type="checkbox">
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+
+              <div class="toggle-item">
+
+                <div class="toggle-info">
+
+                  <div class="toggle-icon">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                  </div>
+
+                  <div>
+                    <h4>SMS Notifications</h4>
+
+                    <p>
+                      Receive important updates directly through SMS.
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    checked
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =========================
+               PREFERENCES PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel"
+            id="preferences"
+          >
+
+            <div class="panel-heading">
+
+              <h2>App Preferences</h2>
+
+              <p>
+                Customize the portal according to your preferences.
+              </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label>Preferred Language</label>
+
+                <select>
+                  <option>English</option>
+                  <option>Odia</option>
+                  <option>Hindi</option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Theme</label>
+
+                <select>
+                  <option>Light</option>
+                  <option>Dark</option>
+                  <option>System Default</option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Date Format</label>
+
+                <select>
+                  <option>DD MMM YYYY</option>
+                  <option>DD/MM/YYYY</option>
+                  <option>MM/DD/YYYY</option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Time Format</label>
+
+                <select>
+                  <option>12 Hour</option>
+                  <option>24 Hour</option>
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <div class="save-row">
+
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-check"></i>
+                Save Preferences
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =========================
+               SECURITY PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel"
+            id="security"
+          >
+
+            <div class="panel-heading">
+
+              <h2>Security Settings</h2>
+
+              <p>
+                Protect your farmer account and personal information.
+              </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+              <div class="security-content">
+
+                <div class="security-icon">
+                  <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div>
+                  <h4>Change Password</h4>
+
+                  <p>
+                    Update your account password regularly for better security.
+                  </p>
+                </div>
+
+              </div>
+
+              <button class="outline-btn">
+                Change Password
+              </button>
+
+            </div>
+
+
+
+            <div class="security-card">
+
+              <div class="security-content">
+
+                <div class="security-icon">
+                  <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+
+                <div>
+                  <h4>Change Mobile Number</h4>
+
+                  <p>
+                    Your registered number: +91 98765 43210
+                  </p>
+                </div>
+
+              </div>
+
+              <button class="outline-btn">
+                Update Number
+              </button>
+
+            </div>
+
+
+
+            <div class="security-card">
+
+              <div class="security-content">
+
+                <div class="security-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+                  <h4>Two-Factor Authentication</h4>
+
+                  <p>
+                    Add an extra layer of protection to your account.
+                  </p>
+                </div>
+
+              </div>
+
+
+              <label class="switch">
+
+                <input type="checkbox">
+
+                <span class="slider"></span>
+
+              </label>
+
+            </div>
+
+
+
+            <div class="security-card">
+
+              <div class="security-content">
+
+                <div class="security-icon">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div>
+                  <h4>Login Activity</h4>
+
+                  <p>
+                    View devices and recent account login activity.
+                  </p>
+                </div>
+
+              </div>
+
+              <button class="outline-btn">
+                View Activity
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =========================
+               BANK PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel"
+            id="bank"
+          >
+
+            <div class="panel-heading">
+
+              <h2>Bank & Payment Details</h2>
+
+              <p>
+                Manage your account for secure procurement payments.
+              </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label>Account Holder Name</label>
+
+                <input
+                  type="text"
+                  value="Ramesh Kumar"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Bank Name</label>
+
+                <input
+                  type="text"
+                  value="State Bank of India"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Account Number</label>
+
+                <input
+                  type="text"
+                  value="XXXX XXXX 4589"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>IFSC Code</label>
+
+                <input
+                  type="text"
+                  value="SBIN0001234"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Branch Name</label>
+
+                <input
+                  type="text"
+                  value="Kendrapara Branch"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>UPI ID (Optional)</label>
+
+                <input
+                  type="text"
+                  value="ramesh@sbi"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="save-row">
+
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-building-columns"></i>
+                Save Bank Details
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =========================
+               HELP & SUPPORT PANEL
+          ========================= -->
+
+          <div
+            class="settings-panel"
+            id="support"
+          >
+
+            <div class="panel-heading">
+
+              <h2>Help & Support</h2>
+
+              <p>
+                Get assistance regarding procurement and portal services.
+              </p>
+
+            </div>
+
+
+            <div class="help-grid">
+
+
+              <div class="help-card">
+
+                <div class="help-icon">
+                  <i class="fa-solid fa-user-tie"></i>
+                </div>
+
+                <h3>Procurement Officer</h3>
+
+                <p>
+                  Contact your assigned procurement officer for
+                  slot, crop or center-related issues.
+                </p>
+
+                <button>
+                  Contact Officer
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+              </div>
+
+
+
+              <div class="help-card">
+
+                <div class="help-icon">
+                  <i class="fa-solid fa-bullhorn"></i>
+                </div>
+
+                <h3>Raise a Complaint</h3>
+
+                <p>
+                  Report issues related to payment, procurement,
+                  transport or token management.
+                </p>
+
+                <button>
+                  Raise Complaint
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+              </div>
+
+
+
+              <div class="help-card">
+
+                <div class="help-icon">
+                  <i class="fa-solid fa-circle-question"></i>
+                </div>
+
+                <h3>Frequently Asked Questions</h3>
+
+                <p>
+                  Find answers to common questions about
+                  the Farmer Procurement Portal.
+                </p>
+
+                <button>
+                  View FAQs
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+              </div>
+
+
+
+              <div class="help-card">
+
+                <div class="help-icon">
+                  <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+
+                <h3>Technical Support</h3>
+
+                <p>
+                  Facing a technical problem with the website?
+                  Contact our support team.
+                </p>
+
+                <button>
+                  Get Support
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    const tabs =
+      document.querySelectorAll(".setting-tab");
+
+    const panels =
+      document.querySelectorAll(".settings-panel");
+
+
+    tabs.forEach((tab) => {
+
+      tab.addEventListener("click", () => {
+
+        /* REMOVE ACTIVE TAB */
+
+        tabs.forEach((item) => {
+
+          item.classList.remove("active");
+
+        });
+
+
+        /* HIDE ALL PANELS */
+
+        panels.forEach((panel) => {
+
+          panel.classList.remove("active");
+
+        });
+
+
+        /* ACTIVATE CLICKED TAB */
+
+        tab.classList.add("active");
+
+
+        /* GET TARGET PANEL */
+
+        const target =
+          tab.getAttribute("data-tab");
+
+
+        /* SHOW TARGET PANEL */
+
+        document
+          .getElementById(target)
+          .classList
+          .add("active");
+
+      });
+
+    });
+
+
+    /* =========================
+       SAVE BUTTON DEMO
+    ========================= */
+
+    const saveButtons =
+      document.querySelectorAll(".btn-primary");
+
+
+    saveButtons.forEach((button) => {
+
+      button.addEventListener("click", () => {
+
+        const originalText =
+          button.innerHTML;
+
+        button.innerHTML =
+          '<i class="fa-solid fa-check"></i> Saved Successfully';
+
+        setTimeout(() => {
+
+          button.innerHTML =
+            originalText;
+
+        }, 1800);
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

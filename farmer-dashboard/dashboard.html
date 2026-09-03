@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KrishiFlow AI | Farmer Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MOBILE OVERLAY
+========================= -->
+
+<div class="overlay" id="overlay"></div>
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar" id="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-wheat-awn"></i>
+        </div>
+
+        <div>
+            <h2>KRISHI<span>FLOW</span></h2>
+            <p>SMART PROCUREMENT</p>
+        </div>
+
+    </div>
+
+
+    <!-- FARMER PROFILE -->
+
+    <div class="farmer-profile">
+
+        <div class="profile-avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div>
+            <h4>Ramesh Kumar</h4>
+            <p>Farmer ID: FRM10245</p>
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-menu">
+
+
+        <a href="dashboard.html" class="menu-item active" data-page="dashboard">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="#slot" class="menu-item">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+            <span>Book Procurement Slot</span>
+
+        </a>
+
+
+        <a href="#crops" class="menu-item">
+
+            <i class="fa-solid fa-wheat-awn"></i>
+
+            <span>My Crops</span>
+
+        </a>
+
+
+        <a href="#transport" class="menu-item">
+
+            <i class="fa-solid fa-truck"></i>
+
+            <span>Transport Booking</span>
+
+        </a>
+
+
+        <a href="#tracking" class="menu-item">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <span>Live Vehicle Tracking</span>
+
+        </a>
+
+
+        <a href="#queue" class="menu-item">
+
+            <i class="fa-solid fa-ticket"></i>
+
+            <span>My Token & Queue</span>
+
+        </a>
+
+
+        <a href="#procurement" class="menu-item">
+
+            <i class="fa-solid fa-scale-balanced"></i>
+
+            <span>Procurement Status</span>
+
+        </a>
+
+
+        <a href="#payment" class="menu-item">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <span>Payment Status</span>
+
+        </a>
+
+
+        <a href="#notifications" class="menu-item">
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span>Notifications</span>
+
+            <span class="notification-count">3</span>
+
+        </a>
+
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+
+        <a href="f-setting.html" class="menu-item">
+
+            <i class="fa-solid fa-gear"></i>
+
+            <span>Settings</span>
+
+        </a>
+
+
+        <a href="../farmer-login/f-login.html" class="menu-item logout">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="main-content">
+
+
+    <!-- =====================
+         TOP NAVBAR
+    ====================== -->
+
+    <header class="topbar">
+
+
+        <div class="topbar-left">
+
+            <button class="mobile-menu-btn" id="menuBtn">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div>
+
+                <p class="welcome-small">Farmer Procurement Portal</p>
+
+                <h1>Farmer Dashboard</h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+
+            <div class="weather">
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <div>
+
+                    <strong>27°C</strong>
+
+                    <span>Partly Cloudy</span>
+
+                </div>
+
+            </div>
+
+
+            <button class="notification-btn">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span>3</span>
+
+            </button>
+
+
+            <div class="top-profile">
+
+                <div class="top-avatar">
+                    RK
+                </div>
+
+                <div class="profile-name">
+
+                    <strong>Ramesh Kumar</strong>
+
+                    <small>Farmer</small>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =====================
+         DASHBOARD CONTENT
+    ====================== -->
+
+    <div class="dashboard-container">
+
+
+        <!-- WELCOME SECTION -->
+
+        <section class="welcome-banner">
+
+
+            <div class="welcome-content">
+
+                <span class="badge">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    SMART FARMER PROCUREMENT
+
+                </span>
+
+
+                <h2>
+                    Welcome back, Ramesh! 👨‍🌾
+                </h2>
+
+
+                <p>
+
+                    Manage your crop procurement, book slots,
+                    track vehicles and receive real-time updates
+                    from one platform.
+
+                </p>
+
+
+                <div class="welcome-buttons">
+
+                    <button class="primary-btn"
+                        onclick="scrollToSection('slot')">
+
+                        <i class="fa-solid fa-calendar-plus"></i>
+
+                        Book Procurement Slot
+
+                    </button>
+
+
+                    <button class="outline-btn"
+                        onclick="scrollToSection('transport')">
+
+                        <i class="fa-solid fa-truck"></i>
+
+                        Book Vehicle
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="welcome-icon">
+
+                <i class="fa-solid fa-wheat-awn"></i>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================
+             STATUS CARDS
+        ====================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- CARD 1 -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                </div>
+
+                <div>
+
+                    <p>Upcoming Slot</p>
+
+                    <h3>05 Sept 2026</h3>
+
+                    <span class="status-success">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Confirmed
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                </div>
+
+                <div>
+
+                    <p>Queue Number</p>
+
+                    <h3>#24</h3>
+
+                    <span class="status-info">
+
+                        Estimated wait: 35 min
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-wheat-awn"></i>
+
+                </div>
+
+                <div>
+
+                    <p>Registered Crop</p>
+
+                    <h3>Rice</h3>
+
+                    <span class="status-success">
+
+                        50 Quintals
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 4 -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                </div>
+
+                <div>
+
+                    <p>Payment Status</p>
+
+                    <h3>₹ 1,18,500</h3>
+
+                    <span class="status-warning">
+
+                        Processing
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================
+             QUICK ACTIONS
+        ====================== -->
+
+        <section class="section-block">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        FARMER SERVICES
+                    </p>
+
+                    <h2>Quick Actions</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions-grid">
+
+
+                <div class="quick-card"
+                    onclick="scrollToSection('slot')">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-calendar-plus"></i>
+
+                    </div>
+
+                    <h3>Book Slot</h3>
+
+                    <p>
+                        Reserve your procurement centre time slot.
+                    </p>
+
+                    <span>
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+
+
+                <div class="quick-card"
+                    onclick="scrollToSection('crops')">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-seedling"></i>
+
+                    </div>
+
+                    <h3>Add Crop</h3>
+
+                    <p>
+                        Add crop type and estimated quantity.
+                    </p>
+
+                    <span>
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+
+
+                <div class="quick-card"
+                    onclick="scrollToSection('transport')">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-truck-moving"></i>
+
+                    </div>
+
+                    <h3>Book Vehicle</h3>
+
+                    <p>
+                        Request a vehicle for crop pickup.
+                    </p>
+
+                    <span>
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+
+
+                <div class="quick-card"
+                    onclick="scrollToSection('tracking')">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-location-crosshairs"></i>
+
+                    </div>
+
+                    <h3>Track Vehicle</h3>
+
+                    <p>
+                        View vehicle location and estimated arrival.
+                    </p>
+
+                    <span>
+                        Track Now
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================
+             PROCUREMENT JOURNEY
+        ====================== -->
+
+        <section class="section-block journey-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        PROCUREMENT PROCESS
+                    </p>
+
+                    <h2>Your Procurement Journey</h2>
+
+                </div>
+
+                <span class="process-badge">
+
+                    Step 4 of 8
+
+                </span>
+
+            </div>
+
+
+
+            <div class="journey-container">
+
+
+                <div class="journey-step completed">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <h4>Registration</h4>
+
+                    <p>Completed</p>
+
+                </div>
+
+
+                <div class="journey-line completed-line"></div>
+
+
+                <div class="journey-step completed">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <h4>Crop Details</h4>
+
+                    <p>Completed</p>
+
+                </div>
+
+
+                <div class="journey-line completed-line"></div>
+
+
+                <div class="journey-step completed">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <h4>Delivery Method</h4>
+
+                    <p>Selected</p>
+
+                </div>
+
+
+                <div class="journey-line completed-line"></div>
+
+
+                <div class="journey-step active-step">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-truck"></i>
+
+                    </div>
+
+                    <h4>Transport</h4>
+
+                    <p>In Progress</p>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-scale-balanced"></i>
+
+                    </div>
+
+                    <h4>Verification</h4>
+
+                    <p>Pending</p>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-weight-scale"></i>
+
+                    </div>
+
+                    <h4>Weighing</h4>
+
+                    <p>Pending</p>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-box"></i>
+
+                    </div>
+
+                    <h4>Procurement</h4>
+
+                    <p>Pending</p>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-circle">
+
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                    </div>
+
+                    <h4>Payment</h4>
+
+                    <p>Pending</p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================
+             MAIN TWO COLUMN
+        ====================== -->
+
+        <section class="two-column-layout">
+
+
+            <!-- LEFT -->
+
+            <div class="left-column">
+
+
+                <!-- UPCOMING PROCUREMENT -->
+
+                <div class="dashboard-card" id="slot">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                UPCOMING
+                            </p>
+
+                            <h2>Procurement Slot</h2>
+
+                        </div>
+
+                        <i class="fa-solid fa-calendar-days card-header-icon"></i>
+
+                    </div>
+
+
+                    <div class="slot-info">
+
+
+                        <div class="slot-date">
+
+                            <span>SEP</span>
+
+                            <strong>05</strong>
+
+                        </div>
+
+
+                        <div class="slot-details">
+
+                            <h3>
+                                Central Procurement Centre
+                            </h3>
+
+                            <p>
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                Bhubaneswar, Odisha
+
+                            </p>
+
+
+                            <div class="slot-time">
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                10:00 AM – 12:00 PM
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="slot-footer">
+
+                        <div>
+
+                            <span>Token Number</span>
+
+                            <strong>#KPF-2405</strong>
+
+                        </div>
+
+
+                        <button class="secondary-btn"
+                            onclick="showMessage('Slot details opened successfully!')">
+
+                            View Details
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- CROP DETAILS -->
+
+                <div class="dashboard-card" id="crops">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                REGISTERED CROP
+                            </p>
+
+                            <h2>My Crop Details</h2>
+
+                        </div>
+
+
+                        <button class="small-orange-btn"
+                            onclick="showCropForm()">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            Add Crop
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="crop-table-wrapper">
+
+
+                        <table class="crop-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Crop</th>
+
+                                    <th>Quantity</th>
+
+                                    <th>Expected Price</th>
+
+                                    <th>Status</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="crop-name">
+
+                                            <div class="crop-icon">
+                                                🌾
+                                            </div>
+
+                                            Rice
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>50 Quintals</td>
+
+                                    <td>₹ 2,370 / Quintal</td>
+
+                                    <td>
+
+                                        <span class="table-status pending">
+
+                                            Verification Pending
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RIGHT -->
+
+            <div class="right-column">
+
+
+                <!-- QUEUE -->
+
+                <div class="dashboard-card" id="queue">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                LIVE QUEUE
+                            </p>
+
+                            <h2>My Token Status</h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="queue-number">
+
+                        #24
+
+                    </div>
+
+
+                    <p class="queue-text">
+
+                        Farmers before you:
+                        <strong>8</strong>
+
+                    </p>
+
+
+                    <div class="queue-progress">
+
+                        <div class="queue-progress-bar"></div>
+
+                    </div>
+
+
+                    <div class="queue-info-row">
+
+                        <span>
+
+                            <i class="fa-regular fa-clock"></i>
+
+                            Estimated wait
+
+                        </span>
+
+                        <strong>35 Minutes</strong>
+
+                    </div>
+
+
+                    <button class="full-outline-btn">
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        Refresh Queue
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- NOTIFICATIONS -->
+
+                <div class="dashboard-card" id="notifications">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                UPDATES
+                            </p>
+
+                            <h2>Notifications</h2>
+
+                        </div>
+
+
+                        <button class="text-btn">
+
+                            Mark all read
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="notification-list">
+
+
+                        <div class="notification-item unread">
+
+                            <div class="notification-icon orange">
+
+                                <i class="fa-solid fa-calendar-check"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Slot Confirmed</h4>
+
+                                <p>
+
+                                    Your procurement slot has been confirmed.
+
+                                </p>
+
+                                <small>10 minutes ago</small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="notification-item">
+
+                            <div class="notification-icon green">
+
+                                <i class="fa-solid fa-truck"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Vehicle Assigned</h4>
+
+                                <p>
+
+                                    Vehicle OD-02-AB-4582 is assigned.
+
+                                </p>
+
+                                <small>1 hour ago</small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="notification-item">
+
+                            <div class="notification-icon blue">
+
+                                <i class="fa-solid fa-bell"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Queue Updated</h4>
+
+                                <p>
+
+                                    Your estimated waiting time is updated.
+
+                                </p>
+
+                                <small>2 hours ago</small>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================
+             TRANSPORT
+        ====================== -->
+
+        <section class="transport-section" id="transport">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        CROP TRANSPORT
+                    </p>
+
+                    <h2>Choose Delivery Method</h2>
+
+                    <p class="section-description">
+
+                        Select how you want your crops to reach
+                        the procurement centre.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="delivery-options">
+
+
+                <!-- SELF TRANSPORT -->
+
+                <div class="delivery-card selected"
+                    id="selfTransport">
+
+
+                    <div class="delivery-top">
+
+                        <div class="delivery-icon">
+
+                            <i class="fa-solid fa-tractor"></i>
+
+                        </div>
+
+                        <div class="selected-check">
+
+                            <i class="fa-solid fa-check"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>Self Transport</h3>
+
+                    <p>
+
+                        Bring your crop directly to the procurement
+                        centre using your own transport.
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+
+                            <i class="fa-solid fa-check"></i>
+
+                            No vehicle booking required
+
+                        </li>
+
+                        <li>
+
+                            <i class="fa-solid fa-check"></i>
+
+                            Arrive during your booked slot
+
+                        </li>
+
+                    </ul>
+
+
+                    <button class="delivery-btn"
+                        onclick="selectDelivery('self')">
+
+                        Selected
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- VEHICLE -->
+
+                <div class="delivery-card"
+                    id="vehicleTransport">
+
+
+                    <div class="delivery-top">
+
+                        <div class="delivery-icon">
+
+                            <i class="fa-solid fa-truck"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>Centre Vehicle</h3>
+
+                    <p>
+
+                        Request an available procurement vehicle
+                        to collect crops from your location.
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+
+                            <i class="fa-solid fa-check"></i>
+
+                            AI selects nearest vehicle
+
+                        </li>
+
+                        <li>
+
+                            <i class="fa-solid fa-check"></i>
+
+                            Live vehicle tracking
+
+                        </li>
+
+                    </ul>
+
+
+                    <button class="delivery-btn light-btn"
+                        onclick="selectDelivery('vehicle')">
+
+                        Book Vehicle
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================
+             LIVE TRACKING
+        ====================== -->
+
+        <section class="tracking-section" id="tracking">
+
+
+            <div class="tracking-card">
+
+
+                <div class="tracking-content">
+
+
+                    <span class="badge">
+
+                        <i class="fa-solid fa-satellite-dish"></i>
+
+                        LIVE TRACKING
+
+                    </span>
+
+
+                    <h2>Track Your Pickup Vehicle</h2>
+
+
+                    <p>
+
+                        Get real-time information about the
+                        assigned vehicle and estimated arrival time.
+
+                    </p>
+
+
+                    <div class="tracking-details">
+
+
+                        <div>
+
+                            <span>Vehicle Number</span>
+
+                            <strong>OD-02-AB-4582</strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Estimated Arrival</span>
+
+                            <strong>28 Minutes</strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Driver</span>
+
+                            <strong>Mahesh Pradhan</strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button class="primary-btn"
+                        onclick="showMessage('Opening live vehicle tracking...')">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Track Live Location
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="tracking-visual">
+
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+
+                    <div class="tracking-route">
+
+                        <span class="route-start"></span>
+
+                        <span class="route-line"></span>
+
+                        <span class="route-end"></span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================
+             PROCUREMENT STATUS
+        ====================== -->
+
+        <section class="section-block" id="procurement">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        PROCUREMENT STATUS
+                    </p>
+
+                    <h2>Current Procurement Status</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-grid">
+
+
+                <div class="status-card completed-status">
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <h3>Registration</h3>
+
+                    <p>Successfully completed</p>
+
+                </div>
+
+
+                <div class="status-card completed-status">
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <h3>Crop Submission</h3>
+
+                    <p>Crop details registered</p>
+
+                </div>
+
+
+                <div class="status-card active-status">
+
+                    <div>
+
+                        <i class="fa-solid fa-truck"></i>
+
+                    </div>
+
+                    <h3>Transport</h3>
+
+                    <p>Vehicle assigned</p>
+
+                </div>
+
+
+                <div class="status-card">
+
+                    <div>
+
+                        <i class="fa-solid fa-scale-balanced"></i>
+
+                    </div>
+
+                    <h3>Verification</h3>
+
+                    <p>Pending arrival</p>
+
+                </div>
+
+
+                <div class="status-card">
+
+                    <div>
+
+                        <i class="fa-solid fa-weight-scale"></i>
+
+                    </div>
+
+                    <h3>Weighing</h3>
+
+                    <p>Pending</p>
+
+                </div>
+
+
+                <div class="status-card">
+
+                    <div>
+
+                        <i class="fa-solid fa-wallet"></i>
+
+                    </div>
+
+                    <h3>Payment</h3>
+
+                    <p>Pending procurement</p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================
+             PAYMENT
+        ====================== -->
+
+        <section class="payment-card" id="payment">
+
+
+            <div class="payment-left">
+
+
+                <div class="payment-icon">
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p>Estimated Procurement Value</p>
+
+                    <h2>₹ 1,18,500</h2>
+
+                    <span>
+
+                        Based on registered crop quantity
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="payment-right">
+
+
+                <div>
+
+                    <span>Payment Status</span>
+
+                    <strong class="processing">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        Processing
+
+                    </strong>
+
+                </div>
+
+
+                <button class="secondary-btn"
+                    onclick="showMessage('Payment details opened!')">
+
+                    View Payment Details
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="dashboard-footer">
+
+        <div>
+
+            © 2026 KrishiFlow AI – Smart Farmer Procurement System
+
+        </div>
+
+        <div>
+
+            <a href="#">Help & Support</a>
+
+            <a href="#">Privacy</a>
+
+            <a href="#">Terms</a>
+
+        </div>
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- =========================
+     TOAST MESSAGE
+========================= -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Action completed successfully!
+    </span>
+
+</div>
+
+
+
+<!-- =========================
+     ADD CROP MODAL
+========================= -->
+
+<div class="modal" id="cropModal">
+
+
+    <div class="modal-box">
+
+
+        <button class="close-modal"
+            onclick="closeCropForm()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <h2>Add Crop Details</h2>
+
+        <p>
+            Enter your crop information for procurement.
+        </p>
+
+
+        <form id="cropForm">
+
+
+            <div class="form-group">
+
+                <label>Crop Name</label>
+
+                <select id="cropName">
+
+                    <option>Rice</option>
+
+                    <option>Wheat</option>
+
+                    <option>Maize</option>
+
+                    <option>Millet</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Quantity (Quintals)</label>
+
+                <input
+                    type="number"
+                    id="cropQuantity"
+                    placeholder="Enter quantity"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Expected Procurement Centre</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter procurement centre"
+                    required>
+
+            </div>
+
+
+            <button type="submit"
+                class="primary-btn modal-submit">
+
+                Submit Crop Details
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+<script src="dashboard.js"></script>
+
+
+</body>
+</html>

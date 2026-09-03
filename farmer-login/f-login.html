@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Login | AGRO</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="f-login.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
+
+            <div>
+
+                <h2>AGRO</h2>
+
+                <span>CROPS FARMING</span>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-right">
+
+            <a href="../index.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a href="../index.html#contact">
+                Help Center
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="login-section">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-info">
+
+
+            <p class="section-tag">
+                FARMER PORTAL
+            </p>
+
+
+            <h1>
+                Welcome to<br>
+                <span>AGRO Farmer Portal</span>
+            </h1>
+
+
+            <p class="description">
+
+                Access agricultural services, crop information,
+                procurement facilities, logistics support and
+                government schemes through your farmer account.
+
+            </p>
+
+
+            <div class="benefits">
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Crop Management</h3>
+
+                        <p>
+                            Manage your crop and farming information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Easy Procurement</h3>
+
+                        <p>
+                            Book crop pickup and procurement services.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Market Insights</h3>
+
+                        <p>
+                            Get market prices and agricultural updates.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOGIN CARD -->
+
+        <div class="login-container">
+
+
+            <div class="login-card">
+
+
+                <div class="login-header">
+
+                    <div class="farmer-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <h2>Farmer Login</h2>
+
+
+                    <p>
+                        Enter your details to access your account
+                    </p>
+
+                </div>
+
+
+
+                <!-- FORM -->
+
+                <form id="farmerForm">
+
+
+                    <!-- Farmer ID -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                            Farmer ID
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="farmerId"
+                            placeholder="Enter Farmer ID"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- Farmer Code -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            <i class="fa-solid fa-key"></i>
+
+                            Farmer Code
+
+                        </label>
+
+
+                        <input
+                            type="password"
+                            id="farmerCode"
+                            placeholder="Enter Farmer Code"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- State -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            <i class="fa-solid fa-map"></i>
+
+                            State
+
+                        </label>
+
+
+                        <select id="state" required>
+
+                            <option value="">
+                                Select State
+                            </option>
+
+                            <option value="Odisha">
+                                Odisha
+                            </option>
+
+                            <option value="West Bengal">
+                                West Bengal
+                            </option>
+
+                            <option value="Jharkhand">
+                                Jharkhand
+                            </option>
+
+                            <option value="Bihar">
+                                Bihar
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- District -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            District
+
+                        </label>
+
+
+                        <select id="district" required>
+
+                            <option value="">
+                                Select District
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Block -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            <i class="fa-solid fa-building"></i>
+
+                            Block
+
+                        </label>
+
+
+                        <select id="block" required>
+
+                            <option value="">
+                                Select Block
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Remember -->
+
+                    <div class="remember-section">
+
+                        <label>
+
+                            <input type="checkbox">
+
+                            Remember me
+
+                        </label>
+
+
+                        <a href="#">
+                            Forgot Code?
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- Login -->
+
+                    <button
+                        type="submit"
+                        class="login-btn">
+
+                        <span>Login to Dashboard</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <div class="register-text">
+
+                    <p>
+                        New Farmer?
+                    </p>
+
+                    <a href="#">
+                        Register Now
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <strong>AGRO</strong>
+
+                <span>
+                    CROPS FARMING
+                </span>
+
+            </div>
+
+
+            <p>
+                © 2026 AGRO Crops Farming.
+                All Rights Reserved.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="#">Privacy Policy</a>
+
+                <a href="#">Terms & Conditions</a>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= SUCCESS POPUP ================= -->
+
+    <div class="popup" id="popup">
+
+        <div class="popup-box">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h2>Login Successful!</h2>
+
+            <p>
+                Welcome to AGRO Farmer Portal.
+            </p>
+
+            <button onclick="closePopup()">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="f-login.js"></script>
+
+</body>
+
+</html>
